@@ -2,12 +2,12 @@
 require('should');
 
 describe('svg-react-loader/lib/xml', () => {
-    const xml = require('../../../lib/xml')();
+    const xml = require('../../../lib/xml')(null);
     const read = require('../../../lib/util/read-file');
 
     it('should parse xml correctly', (done) => {
         read('test/samples/simple.svg').
-            flatMap(xml.parse).
+            flatMap(xml).
             subscribe(
                 (result) => {
                     result.

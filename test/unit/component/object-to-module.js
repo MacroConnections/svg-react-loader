@@ -3,7 +3,7 @@ require('should');
 
 describe('svg-react-loader/lib/component/from-object', () => {
     const toModule = require('../../../lib/component/object-to-module');
-    const xml = require('../../../lib/xml')();
+    const xml = require('../../../lib/xml')(null);
     const read = require('../../../lib/util/read-file');
 
     const expectedProps = {
@@ -18,7 +18,7 @@ describe('svg-react-loader/lib/component/from-object', () => {
 
     it('should return the correct string for a component function', (done) => {
         read('test/samples/simple.svg').
-            flatMap(xml.parse).
+            flatMap(xml).
             map(toModule).
             subscribe(
                 (result) => {
