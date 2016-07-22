@@ -31,8 +31,9 @@ describe('svg-react-loader/lib/component/from-object', () => {
                             'module.exports = function () { ' +
                             'return React.createElement("svg",' + JSON.stringify(expectedProps) + ',' +
                             '[React.createElement("rect",{"x":"0","y":"0",' +
-                            '"width":"16","height":"16","fill":"#fff"})]' +
-                            '); };'
+                            '"width":"16","height":"16","fill":"#fff"}),' +
+                            'React.createElement("text",null)' +
+                            ']); };'
                         );
                 },
                 (error) => { throw error; },

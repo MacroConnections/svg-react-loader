@@ -10,4 +10,5 @@
     class="simple"
 >
     <rect x="0" y="0" width="16" height="16" fill="#fff" />
+    <text>Foobar</text>
 </svg>
