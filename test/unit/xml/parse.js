@@ -2,10 +2,11 @@
 require('should');
 
 describe('svg-react-loader/lib/xml', () => {
-    const xmlParser = require('../../../lib/xml/parse')(null);
     const read = require('../../../lib/util/read-file');
 
-    it('should parse xml correctly', (done) => {
+    it('should parse simple xml correctly', (done) => {
+        const xmlParser = require('../../../lib/xml/parse')(null);
+
         read('test/samples/simple.svg').
             flatMap(xmlParser).
             subscribe(
@@ -38,6 +39,46 @@ describe('svg-react-loader/lib/xml', () => {
                                 }
                             ]
                         });
+                },
+                (error) => { throw error; },
+                done
+            );
+    });
+
+    it('should parse text in xml correctly', (done) => {
+        const sanitizer = require('../../../lib/sanitizer')({
+            filters: [
+                require('../../../lib/sanitizer/filters/normalize-node')(null),
+                require('../../../lib/sanitizer/filters/underscore-to-children')(null)
+            ]
+        });
+        const xmlParser = require('../../../lib/xml/parse')({ sanitizer });
+
+        read('test/samples/text.svg').
+            flatMap(xmlParser).
+            subscribe(
+                (result) => {
+                    console.log(JSON.stringify(result, null, 4));
+                },
+                (error) => { throw error; },
+                done
+            );
+    });
+
+    it.only('should parse styles in xml correctly', (done) => {
+        const sanitizer = require('../../../lib/sanitizer')({
+            filters: [
+                require('../../../lib/sanitizer/filters/normalize-node')(null),
+                require('../../../lib/sanitizer/filters/underscore-to-children')(null)
+            ]
+        });
+        const xmlParser = require('../../../lib/xml/parse')({ sanitizer });
+
+        read('test/samples/styles.svg').
+            flatMap(xmlParser).
+            subscribe(
+                (result) => {
+                    console.log(JSON.stringify(result, null, 4));
                 },
                 (error) => { throw error; },
                 done
