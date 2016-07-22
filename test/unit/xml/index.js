@@ -2,12 +2,12 @@
 require('should');
 
 describe('svg-react-loader/lib/xml', () => {
-    const xml = require('../../../lib/xml')(null);
+    const xmlParser = require('../../../lib/xml/parse')(null);
     const read = require('../../../lib/util/read-file');
 
     it('should parse xml correctly', (done) => {
         read('test/samples/simple.svg').
-            flatMap(xml).
+            flatMap(xmlParser).
             subscribe(
                 (result) => {
                     result.
@@ -19,6 +19,8 @@ describe('svg-react-loader/lib/xml', () => {
                                 "y": "0px",
                                 "viewbox": "0 0 16 16",
                                 "enableBackground": "new 0 0 16 16",
+                                "xmlns": "http://www.w3.org/2000/svg",
+                                "xmlnsXlink": "http://www.w3.org/1999/xlink",
                                 "xmlSpace": "preserve",
                                 "className": "simple"
                             },
