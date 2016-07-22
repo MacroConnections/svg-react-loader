@@ -18,8 +18,7 @@
     "loader",
     "react",
     "svg",
-    "component",
-    "jsx"
+    "component"
   ],
   "author": "Jerry Hamlet <jerry@hamletink.com>",
   "license": "MIT",
