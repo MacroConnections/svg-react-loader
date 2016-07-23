@@ -33,8 +33,9 @@ describe('svg-react-loader/lib/component/object-to-module', () => {
                         should.
                         equal(
                             'var React = require(\'react\');\n' +
-                            'module.exports = function () { ' +
-                            'return React.createElement("svg",' + JSON.stringify(expectedProps) + ',' +
+                            'var merge = Object.assign || function (a, b) { var r = {}, p; for (p in a) { r[p] = a[p]; } for (p in b) { r[p] = b[p]; } return r; };\n' +
+                            'module.exports = function (props) { ' +
+                            'return React.createElement("svg",merge(' + JSON.stringify(expectedProps) + ',props),' +
                             '[React.createElement("rect",{"x":"0","y":"0",' +
                             '"width":"16","height":"16","fill":"#fff"}),' +
                             'React.createElement("text",null,["Foobar"])' +
