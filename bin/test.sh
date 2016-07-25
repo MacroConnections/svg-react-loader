@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 MOCHA="./node_modules/.bin/mocha"
-DIR="./test/$1"
+TYPE="${1:-unit}"
+DIR="./test/$TYPE"
 
 $MOCHA \
     --harmony \
