@@ -1,10 +1,10 @@
 /*globals describe, it*/
 require('should');
 
-describe('svg-react-loader/lib/sanitizer/filters/prefix-style-classnames', () => {
+describe('svg-react-loader/lib/sanitizer/filters/prefix-style-class-id', () => {
     const traverse = require('traverse');
     const prefixStyleClassnames =
-        require('../../../../lib/sanitizer/filters/prefix-style-classnames')(null);
+        require('../../../../lib/sanitizer/filters/prefix-style-class-id')(null);
 
     it('should work on a simple tree', () => {
         const tree = {

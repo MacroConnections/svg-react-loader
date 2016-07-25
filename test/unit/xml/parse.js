@@ -110,7 +110,7 @@ describe('svg-react-loader/lib/xml/parse', () => {
                 require('../../../lib/sanitizer/filters/text-content')(null),
                 require('../../../lib/sanitizer/filters/normalize-node')(null),
                 require('../../../lib/sanitizer/filters/remove-xmlns-props')(null),
-                require('../../../lib/sanitizer/filters/prefix-style-classnames')({
+                require('../../../lib/sanitizer/filters/prefix-style-class-id')({
                     prefix: 'styles-test__'
                 })
             ]
